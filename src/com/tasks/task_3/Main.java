@@ -10,7 +10,9 @@ public class Main {
             System.out.print("Print text or \"exit\" to exit: ");
 
             String text = input.nextLine();
-            if(text.equals("exit")) break;
+            if(text.equals("exit")) {
+                break;
+            }
 
             text = text.replaceAll("[,.!?\\-:;\"\']", "");
 
@@ -18,8 +20,8 @@ public class Main {
             words.removeAll(Collections.singleton(""));
 
 
-
-            while(true) {
+            boolean skipped = false;
+            while(!skipped) {
                 System.out.println(
                                 "1) Print the number of words\n" +
                                 "2) Sort the words\n" +
@@ -27,31 +29,36 @@ public class Main {
                                 "0) Skip\n"
                 );
 
-                String command = input.nextLine();
-                if(command.equals("1")) {
-                    System.out.printf("The number of words: %d\n", words.size());
-
-                } else if (command.equals("2")) {
-                    words.sort(String::compareToIgnoreCase);
-                    System.out.println(words.toString());
+                switch (input.nextLine()) {
+                    case "1":
+                        System.out.printf("The number of words: %d\n", words.size());
+                        break;
 
 
-                } else if (command.equals("3")) {
-                    for (int i = 0; i < words.size(); ++i) {
-                        words.set(i, words.get(i).substring(0, 1).toUpperCase() + words.get(i).substring(1));
-                    }
-                    System.out.println(words.toString());
+                    case "2":
+                        words.sort(String::compareToIgnoreCase);
+                        System.out.println(words.toString());
+                        break;
 
 
-                } else if (command.equals("0")) {
-                    break;
-                } else {
-                    System.out.println("Wrong command");
+                    case "3":
+                        for (int i = 0; i < words.size(); i++) {
+                            words.set(i, words.get(i).substring(0, 1).toUpperCase() + words.get(i).substring(1));
+                        }
+                        System.out.println(words.toString());
+                        break;
+
+
+                    case "0":
+                        skipped = true;
+                        break;
+
+
+                    default:
+                        System.out.println("Wrong command");
+                        break;
                 }
             }
-
         }
-
-
     }
 }

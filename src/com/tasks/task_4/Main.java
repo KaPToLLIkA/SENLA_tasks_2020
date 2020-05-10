@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,11 +13,15 @@ public class Main {
 
             System.out.print("Print text or \"exit\" to exit: ");
             String text = input.nextLine();
-            if(text.equals("exit")) break;
+            if(text.equals("exit")) {
+                break;
+            }
 
             System.out.print("Print word or \"exit\" to exit: ");
             String searchWord = input.nextLine();
-            if(searchWord.equals("exit")) break;
+            if(searchWord.equals("exit")) {
+                break;
+            }
 
             text = text.replaceAll("[,.!?\\-:;\"\']", "");
 
@@ -27,9 +29,11 @@ public class Main {
             words.removeAll(Collections.singleton(""));
 
             int count = 0;
-            for (String word: words)
-                if(word.compareToIgnoreCase(searchWord) == 0)
+            for (String word: words) {
+                if(word.compareToIgnoreCase(searchWord) == 0) {
                     ++count;
+                }
+            }
 
             System.out.printf("%d words found\n", count);
         }

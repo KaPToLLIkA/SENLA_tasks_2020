@@ -20,11 +20,12 @@ public class Main {
             }
         }
 
-        for(int value = 0; value <= N; ++value) {
+        for(int value = 0; value <= N; value++) {
             builder = new StringBuilder(Integer.toString(value));
 
-            if(builder.toString().equals(builder.reverse().toString()))
+            if(builder.toString().equals(builder.reverse().toString())) {
                 System.out.printf("%d - palindrome\n", value);
+            }
         }
     }
 }

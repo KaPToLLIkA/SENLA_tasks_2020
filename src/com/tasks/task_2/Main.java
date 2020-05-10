@@ -9,10 +9,14 @@ public class Main {
 
         while(true) {
             int firstValue = getIntFromInput(input, "Print first value or zero to exit: ");
-            if(firstValue == 0) break;
-            int secondValue = getIntFromInput(input, "Print second value or zero to exit: ");
-            if(secondValue == 0) break;
+            if(firstValue == 0) {
+                break;
+            }
 
+            int secondValue = getIntFromInput(input, "Print second value or zero to exit: ");
+            if(secondValue == 0) {
+                break;
+            }
             System.out.printf("%d - greatest common divisor\n", MyMath.getGreatestDivisor(firstValue, secondValue));
             System.out.printf("%d - smallest common multiple\n", MyMath.getSmallestMultiple(firstValue, secondValue));
 
@@ -34,22 +38,3 @@ public class Main {
     }
 }
 
-
-class MyMath {
-    public static int getGreatestDivisor(int firstNumber, int secondNumber) {
-        int max = Integer.max(firstNumber, secondNumber),
-                min = Integer.min(firstNumber, secondNumber);
-
-        while(max - min != 0) {
-            min = Integer.min(max - min, min);
-            max = Integer.max(max - min, min);
-        }
-
-        return max;
-    }
-
-    public static int getSmallestMultiple(int firstNumber, int secondNumber) {
-        return (firstNumber * secondNumber) / getGreatestDivisor(firstNumber, secondNumber);
-    }
-
-}
