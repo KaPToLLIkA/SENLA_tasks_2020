@@ -13,8 +13,8 @@ public class Main {
 
         Backpack backpack = new Backpack(getDoubleFromInput(input, "Print max weight: "));
 
-        for(int i = 0; i < itemsCount; i++) {
-            System.out.println(i + 1);
+        for(int i = 1; i <= itemsCount; i++) {
+            System.out.println(i);
             inputItems.addItem(
                     new Item(
                             getDoubleFromInput(input, "Print weight: "),
